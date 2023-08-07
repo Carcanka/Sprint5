@@ -26,52 +26,50 @@ describe("testear status", () => {
 });
 
 describe("testear status", () => {
-  test("completado verdadero Nro 1", async () => {
+  test("completado verdadero id 1", async () => {
     const response = await request(app).get("/api/tareas/1");
     expect(response.body[0].completado).toBeTruthy();
     });
 });
 
 describe("testear status", () => {
-  test("completado falso Nro 3", async () => {
+  test("completado falso id 3", async () => {
     const response = await request(app).get("/api/tareas/3");
     expect(response.body[0].completado).toBeFalsy();
     });
 });
 
-// describe("testear status", () => {
-//   test("busqueda de tarea indefinida", async () => {
-//     const response = await request(app).get("/api/tareas/3");
-//     expect(response.body[0].equipoDeFutbol).toBeUndefined();
-//     });
-// });
+describe("testear status", () => {
+  test("busqueda de tarea indefinida", async () => {
+    const response = await request(app).get("/api/tareas/3");
+    expect(response.body[0].funcionalidad).toBeUndefined();
+    });
+});
 
-// describe("testear status", () => {
-//   test("", async () => {
-//     const response = await request(app).get("/api/tareas/1");
-//     expect(response.body.tareas[0].titulo).toContain("agua");
-//     });
-// });
+describe("testear status", () => {
+  test("busqueda que contenga una palabra en id 2", async () => {
+    const response = await request(app).get("/api/tareas/2");
+    expect(response.body[0].titulo).toContain("Agua");
+    });
+});
 
-// describe("testear status", () => {
-//   test("", async () => {
-//     const response = await request(app).get("/api/tareas");
-//     expect(response.body.tareas).toHaveLength(4);
-//     });
-// });
+describe("testear status", () => {
+  test("tener un largo de tareas", async () => {
+    const response = await request(app).get("/api/tareas");
+    expect(response.body).toHaveLength(9);
+    });
+});
 
-// describe("testear status", () => {
-//   test("", async () => {
-//     const response = await request(app).get("/api/tareas/5");
-//     expect(response.body.tareas[0].titulo).toHaveLength(28);
-//     });
-// });
+describe("testear status", () => {
+  test("tener un largo dentro de la tarea 5", async () => {
+    const response = await request(app).get("/api/tareas/5");
+    expect(response.body[0].titulo).toHaveLength(20);
+    });
+});
 
-// //BONUS
-
-// describe("testear status", () => {
-//   test("", async () => {
-//     const response = await request(app).get("/api/tareas/5");
-//     expect(response.body.tareas[0].titulo).toMatch(/agua/);
-//     });
-// });
+describe("testear status", () => {
+  test("cohincidir dentro de la tarea 3", async () => {
+    const response = await request(app).get("/api/tareas/3");
+    expect(response.body[0].titulo).toMatch(/Agua/);
+    });
+});
